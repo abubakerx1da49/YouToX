@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain, globalShortcut, dialog } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -11,15 +11,51 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
-    height: 600,
+    height: 530,
+    minWidth: 800,
+    minHeight: 530,
+    maxWidth: 800,
+    maxHeight: 530,
+    // icon: 'logo.png',
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
+    },
+    frame: false,
+    maximizable: false,
   });
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 };
+
+ipcMain.on('quit-app', (event) => {
+  app.quit()
+})
+
+ipcMain.on('minimize-app', (event) => {
+  BrowserWindow.getFocusedWindow().minimize()
+})
+
+ipcMain.on('reload-app', (event) => {
+  BrowserWindow.getFocusedWindow().reload()
+})
+
+ipcMain.on('maximize-app', (event) => {
+  let icon = ""
+  if (BrowserWindow.getFocusedWindow().isMaximized()) {
+    BrowserWindow.getFocusedWindow().unmaximize()
+    icon = "Max"
+  } else {
+    BrowserWindow.getFocusedWindow().maximize()
+    icon = "UnMax"
+  }
+
+})
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
