@@ -28,19 +28,20 @@
         <input class="form-check-input" type="checkbox" role="switch" id="DarkMode" checked>
       </div>
 
+      
     </div>
-
+    
     <div style="display: flex; justify-content: center; align-items: center;">
       <!-- <img src="logo.png" alt="" style="margin-left: .4rem;"> -->
       <div id="location">
         YouToX
       </div>
     </div>
-
+    
     <div class="buttons">
-
-
+      
       <div>
+        <button type="button" class="refresh_btn" id="refresh_btn"><i class="bi bi-arrow-clockwise"></i></button>
         <button id="minimize-button"><i class="bi bi-circle-fill"></i></button>
         <!-- <button id="maximize-button"><i class="bi bi-circle-fill"></i></button> -->
         <button id="quit-button"><i class="bi bi-circle-fill"></i></button>
@@ -54,20 +55,29 @@
 
   <div class="upper_section">
     <input type="text" id="input" placeholder="YouTube URL">
-    <button type="submit" id="generate" disabled>Submit</button>
+    <button type="submit" id="download_btn" disabled>Download</button>
   </div>
 
   <div class="lower_section">
     <div class="left_section">
-      <canvas id="canvas"></canvas>
+      <div id="canvas">
+      </div>
     </div>
     <div class="right_section">
+      
+      <div class="p-2 details">
+        <div class="video_url mb-2" id="video_url"></div>
+        <div class="video_title mb-1" id="video_title"></div>
+        <div class="channel mb-1" id="channel"></div>
+        <div class="views mb-1" id="views"></div>
+        <div class="pub_date mb-1" id="pub_date"></div>
 
-      <div class="attr_buttons">
-        <button type="button" class="refresh_btn" id="refresh_btn">Referesh</button>
-        <button type="button" class="save_btn" onclick="downloadImage('img')" id="save_btn">Download</button>
+        <div class="attr_buttons mb-3" id="attr_buttons">
+        </div>
+
       </div>
 
+      
     </div>
   </div>
 
