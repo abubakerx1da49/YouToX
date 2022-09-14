@@ -63,14 +63,14 @@ download_btn.addEventListener("click", async () => {
     pub_date.innerHTML = ""
 
 
-    location_section.innerText = "YouToX - Loading..."
+    location_section.innerHTML = `<i class="bi bi-arrow-clockwise icon load"></i> YouToX - Loading...`
     
     let a;
     
     try {
         a = await ytdl.getInfo(input.value)
     } catch (error) {
-        location_section.innerText = "YouToX - Error Occured"
+        location_section.innerHTML = `<i class="bi bi-exclamation-square-fill icon danger"></i> YouToX - Error Occured`
     }
     
     let format_array = a.formats

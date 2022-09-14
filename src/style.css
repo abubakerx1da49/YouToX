@@ -69,6 +69,18 @@ body {
   padding-top: .5rem;
 }
 
+.appbar_section .icon {
+  margin: 0 .4rem;
+}
+
+.appbar_section .danger {
+  color: yellow;
+}
+
+.appbar_section .load {
+  color: blue;
+}
+
 .img input{
   box-shadow: none !important;
   outline: none !important;
